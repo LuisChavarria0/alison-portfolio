@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  // Publicado en GitHub Pages bajo https://luischavarria0.github.io/alison-portfolio/
-  base: '/alison-portfolio/',
+  // Vercel sirve en la raíz; GitHub Pages bajo /alison-portfolio/
+  base: process.env.VERCEL ? '/' : '/alison-portfolio/',
   plugins: [react(), tailwindcss()],
 })
