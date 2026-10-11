@@ -5,7 +5,7 @@
 const img = (file) => `${import.meta.env.BASE_URL}images/${file}`
 
 // Fechas base (AAAA-MM-DD). La edad y los años de experiencia se calculan solos con la fecha de hoy.
-const BIRTH_DATE = '2007-01-01' // TODO: poner fecha de nacimiento exacta
+const BIRTH_DATE = '2007-03-31'
 const CAREER_START = '2024-01-01' // TODO: poner fecha exacta en que empezó a impulsar marcas
 
 function yearsSince(date) {
