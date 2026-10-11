@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-violet: #C35CFF;
+  --color-cream: #FFFEB5;
+  --color-pink: #FF2EA8;
+  --color-ink: #1E0B2C;
+  --color-plum: #2D0F45;
+
+  --font-display: "Fraunces", serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+
+  --animate-blob: blob 14s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shine: shine 6s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -60px) scale(1.15); }
+    66% { transform: translate(-30px, 30px) scale(0.9); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink font-sans text-cream antialiased;
+}
+
+::selection {
+  background: var(--color-pink);
+  color: var(--color-cream);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #C35CFF, #FF2EA8, #FFFEB5, #FF2EA8, #C35CFF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-shine);
+}
+
+.glass {
+  @apply rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl;
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 50;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
